@@ -35,9 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig', # User App
-    'debug_toolbar', #debug toolbar
-    'officeaccounts.apps.OfficeaccountsConfig', #Office accounts App
+    'users.apps.UsersConfig',  # User App
+    'debug_toolbar',  # debug toolbar
+    'officeaccounts.apps.OfficeaccountsConfig',  # Office accounts App
     'crispy_forms',
 ]
 
@@ -116,17 +116,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # msg_project/settings.py
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 LOGOUT_REDIRECT_URL = '/users/login/'
 
 AUTH_USER_MODEL = 'users.CustomUser'
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 # from SchoolManagement.users.views import ProfilePage
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('accounts/profile/', ProfilePage.as_view(template_name = 'users/profile.html'), name="profile_page"),
@@ -26,12 +28,12 @@ urlpatterns = [
     path('accounts/', include('officeaccounts.urls')),
 ]
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns = [
+#         path('__debug__/', include(debug_toolbar.urls)),
 
-        # For django versions before 2.0:
-        # url(r'^__debug__/', include(debug_toolbar.urls)),
+#         # For django versions before 2.0:
+#         # url(r'^__debug__/', include(debug_toolbar.urls)),
 
-    ] + urlpatterns
+#     ] + urlpatterns
