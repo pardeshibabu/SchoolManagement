@@ -16,24 +16,34 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-# from SchoolManagement.users.views import ProfilePage
 
+from .views import index
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('accounts/profile/', ProfilePage.as_view(template_name = 'users/profile.html'), name="profile_page"),
-    path('users/', include('users.urls')),
+    # path('users/', include('users.urls')),
+    path('', index, name="index"),
+    path('templates/index.html', index, name="index"),
+    path('templates/about.html', index, name="index"),
+    path('templates/blog.html', index, name="blog"),
+    path('templates/blog-single.html', index, name="blog-single"),
+    path('templates/contact.html', index, name="contact"),
+    path('templates/courses.html', index, name="courses"),
+    path('templates/pricing.html', index, name="pricing"),
+    path('templates/teacher.html', index, name="teacher"),
     # path('users/', include('django.contrib.auth.urls')),
-    path('accounts/', include('officeaccounts.urls')),
+    # path('accounts/', include('officeaccounts.urls')),
 ]
 
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns = [
-#         path('__debug__/', include(debug_toolbar.urls)),
+if settings.DEBUG:
+    import debug_toolbar
 
-#         # For django versions before 2.0:
-#         # url(r'^__debug__/', include(debug_toolbar.urls)),
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
 
-#     ] + urlpatterns
+                      # For django versions before 2.0:
+                      # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+                  ] + urlpatterns
